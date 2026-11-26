@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="is">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#440d15">
+  <meta name="description" content="Finndu tíu falin jólaorð. Ný orðaleit á hverjum degi frá 1. til 24. desember.">
+  <title>Jólaorðaleit</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23440d15'/%3E%3Cpath d='M16 3q2 11 13 13-11 2-13 13Q14 18 3 16 14 14 16 3Z' fill='%23edc981'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./game.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#play">Fara í orðaleitina</a>
+  <div class="shell">
+    <header class="masthead">
+      <div class="brand"><span aria-hidden="true">✦</span> Jólahornið</div>
+      <button id="help-button" class="help-button" type="button">
+        <span class="help-mark" aria-hidden="true">?</span> <span>Hvernig spila ég?</span>
+      </button>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <h1 id="page-title">Jólaorðaleit</h1>
+          <p id="intro">Finndu tíu falin jólaorð.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true"></div>
+      </section>
+
+      <noscript><p>Kveiktu á JavaScript í vafranum til að spila Jólaorðaleitina.</p></noscript>
+      <div class="game" id="game" hidden>
+        <aside class="words-panel" aria-labelledby="word-title">
+          <p class="edition" id="edition"></p>
+          <h2 id="word-title">Orð dagsins</h2>
+          <p class="theme" id="theme"></p>
+
+          <div class="progress">
+            <p id="word-count">0 af 10 orðum fundin</p>
+            <progress id="progress" max="10" value="0" aria-labelledby="word-count"></progress>
+          </div>
+
+          <ul class="words" id="words"></ul>
+          <p class="hint" id="hint">Dragðu yfir orðið eða veldu fyrsta og síðasta stafinn.</p>
+        </aside>
+
+        <section class="board-panel" id="play" aria-labelledby="board-title" tabindex="-1">
+          <header class="board-header">
+            <h2 id="board-title">Stafanet</h2>
+            <div class="clock" role="timer" aria-label="Liðinn tími" aria-live="off">
+              <span class="clock-icon" aria-hidden="true"></span>
+              <time id="timer" datetime="PT0S">00:00</time>
+            </div>
+          </header>
+          <p class="feedback" id="feedback" role="status" aria-atomic="true"></p>
+          <div class="board" id="board">
+            <div class="marks" id="marks" aria-hidden="true"></div>
+            <div class="letters" id="letters" role="group" aria-labelledby="board-title" aria-describedby="hint keyboard-hint"></div>
+          </div>
+          <p class="sr-only" id="keyboard-hint">Notaðu örvatakkana til að færa þig og Enter eða bilslá til að velja staf. Ýttu á Escape til að hætta við val.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="help-dialog" id="help" aria-labelledby="help-title">
+    <h2 id="help-title">Hvernig spila ég?</h2>
+    <ol>
+      <li>Finndu orðin á listanum. Þau liggja lárétt, lóðrétt eða á ská og geta verið afturábak.</li>
+      <li>Dragðu frá fyrsta stafnum til þess síðasta. Þú getur líka smellt eða snert annan endann og svo hinn.</li>
+      <li>Tíminn fer af stað þegar þú velur fyrsta stafinn og stöðvast þegar öll orðin eru fundin.</li>
+    </ol>
+    <p>Á lyklaborði notarðu örvatakkana til að færa þig og Enter eða bilslá til að velja staf. Escape hættir við val.</p>
+    <form method="dialog"><button class="dialog-close" autofocus type="submit">Loka</button></form>
+  </dialog>
+</body>
+</html>
